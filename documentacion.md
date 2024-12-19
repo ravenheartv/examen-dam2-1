@@ -134,3 +134,55 @@ while ($row = $result->fetch_assoc()) {
 Construye y lanza el entorno completo:
 
 docker-compose up --build
+
+comando:
+
+docker pull ravenheartv/apache-php-mysql_web
+
+## CRUD
+
+el crud es muy pensante, tengo añadidos los archivos necesarios pero no termino de entender el uso : 
+
+
+## Endpoints para el CRUD de usuarios
+
+1. **Crear un usuario** (POST)
+   - **URL**: `http://localhost:8080/create.php`
+   - **Método**: `POST`
+   - **Cuerpo**: 
+     ```json
+     {
+       "name": "new_user",
+       "password": "password123"
+     }
+     ```
+
+2. **Leer usuarios** (GET)
+   - **URL**: `http://localhost:8080/read.php`
+   - **Método**: `GET`
+
+3. **Actualizar un usuario** (PUT)
+   - **URL**: `http://localhost:8080/update.php`
+   - **Método**: `PUT`
+   - **Cuerpo**: 
+     ```json
+     {
+       "id": 1,
+       "name": "updated_user",
+       "password": "newpassword"
+     }
+     ```
+
+4. **Eliminar un usuario** (DELETE)
+   - **URL**: `http://localhost:8080/delete.php`
+   - **Método**: `DELETE`
+   - **Cuerpo**:
+     ```json
+     {
+       "id": 1
+     }
+     ```
+
+---
+
+
