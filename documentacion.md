@@ -70,3 +70,67 @@ funcionando:
 
 ![infophp](phpinfo.png)
 ![random funcionando](random-php.png)
+
+
+## SPRINT 5
+
+Crea una carpeta apache-php-mysql y dentro un archivo docker-compose.yml:
+
+```
+version: '3.8'
+services:
+  web:
+    build: ./apache-php
+    ports:
+      - "8080:80"
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: examen
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:
+```
+
+Creo un archivo init.sql:
+
+```
+CREATE DATABASE examen;
+USE examen;
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    password VARCHAR(100)
+);
+INSERT INTO users (name, password) VALUES ('user1', 'pass1'), ('user2', 'pass2');
+```
+
+Copio la carpeta apache-php dentro de apache-php-mysql.
+
+Modifico index.php para conectar a MySQL:
+
+```
+<?php
+$conn = new mysqli('db', 'root', 'root', 'examen');
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+echo "Conexión exitosa a la base de datos.";
+?>
+```
+
+Crea un archivo users.php:
+```
+<?php
+$conn = new mysqli('db', 'root', 'root', 'examen');
+$result = $conn->query("SELECT * FROM users");
+while ($row = $result->fetch_assoc()) {
+    echo "<p>ID: {$row['id']} - Name: {$row['name']}</p>";
+}
+?>
+```
+Construye y lanza el entorno completo:
+
+docker-compose up --build
