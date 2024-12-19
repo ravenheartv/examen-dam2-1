@@ -6,7 +6,9 @@ iniciamos el repositorio e iniciamos sesion en docker
 
 ## SPRINT 2
  creamos la carpeta de apache con dockerfile dentro.
-
-```mkdir apache
+ 
+```
+mkdir apache
 cd apache
-```touch Dockerfile
+touch Dockerfile
+```
