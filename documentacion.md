@@ -6,9 +6,18 @@ iniciamos el repositorio e iniciamos sesion en docker
 
 ## SPRINT 2
  creamos la carpeta de apache con dockerfile dentro.
- 
+
 ```
 mkdir apache
 cd apache
 touch Dockerfile
 ```
+
+arrancamos y lanzamos la imagen
+
+```
+docker build -t apache-server .
+docker run -d -p 8080:80 apache-server
+```
+![docker funcionando](imagendocker.png)
+
