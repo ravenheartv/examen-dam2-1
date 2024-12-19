@@ -43,3 +43,30 @@ docker run -d -p 8080:80 apache-php-server
 ![php funcionando](imagenphpfunciona.png)
 
 ## SPRINT 4 
+
+copiamos la carpeta de nuevo y añadimos dos archivos uno de ellos info.php
+
+```
+<?php
+phpinfo();
+?>
+```
+
+y el otro random.php
+
+```
+<?php
+$number = rand(1, 100);
+$elements = ["Elemento1", "Elemento2", "Elemento3", "Elemento4", "Elemento5"];
+echo json_encode([
+    "random_number" => $number,
+    "parity" => $number % 2 === 0 ? "par" : "impar",
+    "random_element" => $elements[array_rand($elements)]
+]);
+?>
+```
+
+funcionando:
+
+![infophp](phpinfo.png)
+![random funcionando](random-php.png)
